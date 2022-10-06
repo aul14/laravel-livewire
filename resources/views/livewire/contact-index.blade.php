@@ -41,6 +41,7 @@
 
         </tbody>
     </table>
+    {{ $contacts->links() }}
 </div>
 
 <script>

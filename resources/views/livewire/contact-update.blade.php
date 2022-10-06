@@ -19,6 +19,6 @@
                 </div>
             </div>
         </div>
-        <button type="submit" class="btn my-3 btn-sm bg-blue-500 hover:bg-blue-700 text-white">Submit</button>
+        <button type="submit" class="btn my-3 btn-sm btn-primary btn-edit text-white">Submit</button>
     </form>
 </div>

@@ -32,7 +32,7 @@
                     <td>
                         <button wire:click="getContact({{ $contact->id }})"
                             class="btn btn-sm btn-info btn-edit text-white">Edit</button>
-                        <button wire:click="destroy({{ $contact->id }})"
+                        <button wire:click="destroy({{ $contact->id }})" onclick="return confirm('Are you sure?')"
                             class="btn
                             btn-sm btn-danger text-white">Hapus</button>
                     </td>

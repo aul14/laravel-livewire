@@ -24,6 +24,16 @@ class ContactIndex extends Component
         $this->emit('getContact', $contact);
     }
 
+    public function destroy($id)
+    {
+        if ($id) {
+            $data = Contact::findOrFail($id);
+            $data->delete();
+
+            session()->flash('message', "Contact deleted succesfully!");
+        }
+    }
+
     public function handleStored($contact)
     {
         session()->flash('message', "Contact {$contact['name']} created succesfully!");

@@ -4,16 +4,21 @@ namespace App\Http\Livewire;
 
 use App\Models\Contact;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class ContactIndex extends Component
 {
+    use WithPagination;
+
+    protected $paginationTheme = 'bootstrap';
+
     protected $listeners = ['contactStored' => 'handleStored', 'contactUpdated' => 'handleUpdated'];
 
     public $statusUpdate = false;
 
     public function render()
     {
-        $contacts = Contact::latest()->get();
+        $contacts = Contact::latest()->paginate(5);
         return view('livewire.contact-index', compact('contacts'));
     }
 

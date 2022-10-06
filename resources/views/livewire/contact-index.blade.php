@@ -6,9 +6,13 @@
             <button class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
-    <livewire:contact-create>
 
-    </livewire:contact-create>
+    @if ($statusUpdate)
+        <livewire:contact-update></livewire:contact-update>
+    @else
+        <livewire:contact-create></livewire:contact-create>
+    @endif
+
     <hr>
     <table class="table">
         <thead class="thead-dark">
@@ -26,8 +30,10 @@
                     <td>{{ $contact->name }}</td>
                     <td>{{ $contact->phone }}</td>
                     <td>
-                        <button class="btn btn-sm btn-info text-white">Edit</button>
-                        <button class="btn btn-sm btn-danger text-white">Hapus</button>
+                        <button wire:click="getContact({{ $contact->id }})"
+                            class="btn btn-sm btn-info btn-edit text-white">Edit</button>
+                        <button class="btn
+                            btn-sm btn-danger text-white">Hapus</button>
                     </td>
                 </tr>
             @endforeach
@@ -35,3 +41,12 @@
         </tbody>
     </table>
 </div>
+
+<script>
+    $(document).on('click', '.btn-edit', function(e) {
+        $("html, body").animate({
+            scrollTop: 0
+        }, "slow");
+        return false;
+    });
+</script>

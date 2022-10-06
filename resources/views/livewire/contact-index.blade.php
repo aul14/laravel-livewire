@@ -14,6 +14,17 @@
     @endif
 
     <hr>
+    <div class="row">
+        <div class="col-sm-2">
+            <select wire:model="paginate" name="" id="" class="form-control form-control-sm">
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+            </select>
+        </div>
+    </div>
+    <hr>
     <table class="table">
         <thead class="thead-dark">
             <tr>
@@ -24,9 +35,10 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($contacts as $contact)
+            <?php $i = ($contacts->currentpage() - 1) * $contacts->perpage() + 1; ?>
+            @foreach ($contacts as $key => $contact)
                 <tr>
-                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $i++ }}</td>
                     <td>{{ $contact->name }}</td>
                     <td>{{ $contact->phone }}</td>
                     <td>

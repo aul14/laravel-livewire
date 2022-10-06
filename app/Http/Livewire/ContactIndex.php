@@ -16,9 +16,11 @@ class ContactIndex extends Component
 
     public $statusUpdate = false;
 
+    public $paginate = 5;
+
     public function render()
     {
-        $contacts = Contact::latest()->paginate(5);
+        $contacts = Contact::latest()->paginate($this->paginate);
         return view('livewire.contact-index', compact('contacts'));
     }
 

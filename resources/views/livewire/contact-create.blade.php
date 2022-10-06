@@ -3,12 +3,18 @@
         <div class="form-group">
             <div class="row">
                 <div class="col">
-                    <input type="text" wire:model="name" name="" id="" class="form-control"
-                        placeholder="name">
+                    <input type="text" wire:model="name" name="" id=""
+                        class="form-control @error('name') is-invalid  @enderror" placeholder="name">
+                    @error('name')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="col">
-                    <input wire:model="phone" type="text" name="" id="" class="form-control"
-                        placeholder="phone">
+                    <input wire:model="phone" type="text" name="" id=""
+                        class="form-control @error('phone') is-invalid  @enderror" placeholder="phone">
+                    @error('phone')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
         </div>

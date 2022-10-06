@@ -18,9 +18,18 @@ class ContactIndex extends Component
 
     public $paginate = 5;
 
+    public $search;
+
+    protected $updatesQueryString = ['search'];
+
+    public function mount()
+    {
+        $this->search = request()->query('search', $this->search);
+    }
+
     public function render()
     {
-        $contacts = Contact::latest()->paginate($this->paginate);
+        $contacts = $this->search == null ? Contact::latest()->paginate($this->paginate) : Contact::latest()->where('name', 'like', "%{$this->search}%")->paginate($this->paginate);
         return view('livewire.contact-index', compact('contacts'));
     }
 

@@ -23,6 +23,10 @@
                 <option value="100">100</option>
             </select>
         </div>
+        <div class="col">
+            <input wire:model="search" type="text" class="form-control form-control-sm float-end w-auto"
+                placeholder="search">
+        </div>
     </div>
     <hr>
     <table class="table">
